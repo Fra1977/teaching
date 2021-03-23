@@ -1,7 +1,7 @@
 # teaching
 
 
-## Data Science for Operations and IT  
+## Data Science for Technical Audience 
 
 - Use notebooks + js + plotly 
 - Create simple surrogate datasets (+Kaggle) 
@@ -12,6 +12,12 @@
 ToC:
 
 
+1. Git
+2. DVC
+
+3. Others 
+
+### Previous plan:
 1. Tools 
   - Python 
   - Notebooks
@@ -43,7 +49,7 @@ ToC:
   - What we need: data in quantity and quality.
     - show impact of data quality : tunable 
     - show learning curve: infliuence of data size 
-    - IT: packages, environments, DWH, anonymization
+    - IT view: packages, environments, link to data sources, anonymization
   - What are future trends:
     - fairness
     - GDPR compliance and data lineage

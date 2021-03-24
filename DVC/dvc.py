@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[14]:
+
+
+from IPython.display import HTML
+
+
 # # DVC - Repeatable Data Science
 
 # # TOC
 #   - What is DVC - a git for data Science - versioning of data 
-#     - why we need it : CAG and determinism
+#     - why we need it : DAG and determinism
 #     - description of basic workflow: code in git, data in dvc, remotes.
 #     - repeat: what git allows us to do 
 #   - How to use - together with git ( basic workflow) 
@@ -25,20 +31,14 @@
 #     - keep things agile, but at the same time prepare for substituting data
 #     - Oss . Other solutions
 
-# In[4]:
-
-
-from IPython.display import HTML
-
-
 # ## What is DVC?
 
 # Basics  
 # 
-#     - www.dvc.org , OSS, since 2019, high activity 
-#     - idea: use git for code versioning, and augment git for data versioning via md5sum
-#     - metadata of data objects is kept in dvc.yaml files which contain the data hash, and which is versioned in git 
-#     - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data 
+# - www.dvc.org , OSS, since 2019, high activity 
+# - idea: use git for code versioning, and augment git for data versioning via md5sum
+# - metadata of data objects is kept in dvc.yaml files which contain the data hash, and which is versioned in git 
+# - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data 
 
 #  
 # <center><img src="files/Img/model-sharing-digram.png" alt="DVC" style="width: 100%;"/></center>
@@ -100,7 +100,7 @@ HTML("""<script id="asciicast-kwwq0tFCKpbRvIu9pAwHT4G2q" src="https://asciinema.
 #     - . \<path_to_venv\>/bin/activate 
 #     - pip install dvc
 
-# In[9]:
+# In[15]:
 
 
 HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.org/a/pSItHG2FBqiS1oim9Eul9d1qM.js" async %></script>""")
@@ -114,33 +114,17 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 # - dvc init creates a .dvc directory structure 
 # - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
 
-# In[10]:
+# In[16]:
 
 
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
 
 
-# ### setup  dvc
+# ### add files 
 
-# - dvc copies most of the behaviour of git. Therefore, run:
-#   - git init 
-#   - dvc init 
-# - dvc init creates a .dvc directory structure 
-# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
-
-# In[10]:
-
-
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
-
-
-# ### setup  dvc
-
-# - dvc copies most of the behaviour of git. Therefore, run:
-#   - git init 
-#   - dvc init 
-# - dvc init creates a .dvc directory structure 
-# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+# - add a data file 
+# - show data.dvc fiel 
+# - verify checksum 
 
 # In[10]:
 
@@ -160,7 +144,16 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
 
 
-# ### setup  dvc
+# ### basic workflow
+- run pipeline 
+- show dvc.yaml file
+# In[10]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ###  the simplest pipeline
 
 # - dvc copies most of the behaviour of git. Therefore, run:
 #   - git init 
@@ -174,7 +167,12 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
 
 
-# ### setup  dvc
+# ### tutorial: import data 
+# 
+# then: run pipeline, show md5sum
+# then  branch, change  code , run new pipeline, show new md5sum
+# then switch back to master, show md5sum before and after dvc checkout
+# 
 
 # - dvc copies most of the behaviour of git. Therefore, run:
 #   - git init 

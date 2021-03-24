@@ -33,17 +33,33 @@ from IPython.display import HTML
 
 # ## What is DVC?
 
-# Some basics  
+# Basics  
 # 
-#     - www.dvc.org , OSS, since 201x, high activity 
+#     - www.dvc.org , OSS, since 2019, high activity 
 #     - idea: use git for code versioning, and augment git for data versioning via md5sum
-#     - data is linked to dvc.yaml files which contains the data hash and is versioned in git 
-#     - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data
-#     - dvc also remembers the DAG (Directed acyclic graph) of execution, linking data input - code - data output in stages 
-#     - this concept allows to replicate the main  functionality of SAS EG, ariflow, luigi, and Data Science platforms such as alteryx, dataiku etc.  
+#     - metadata of data objects is kept in dvc.yaml files which contain the data hash, and which is versioned in git 
+#     - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data 
 
 #  
 # <center><img src="files/Img/model-sharing-digram.png" alt="DVC" style="width: 100%;"/></center>
+
+# ## What else is DVC?
+
+# DAG
+# 
+#   - dvc also remembers the DAG (directed acyclic graph) of execution, linking all stages 
+#   
+#       data input - code - data output
+#   
+#   
+#   - this concept allows to replicate the main  functionality of SAS EG, ariflow, luigi, and Data Science platforms such as alteryx, dataiku etc.  
+
+#  
+# 
+# <center><img src="files/Img/dependency-graph.png" alt="JPG" style="width: 40%;"/></center>
+# 
+
+# <center><img src="files/Img/enterprise-guide_full.jpg" alt="JPG" style="width: 50%;"/></center>
 
 # Some more data 
 
@@ -84,7 +100,7 @@ HTML("""<script id="asciicast-kwwq0tFCKpbRvIu9pAwHT4G2q" src="https://asciinema.
 #     - . \<path_to_venv\>/bin/activate 
 #     - pip install dvc
 
-# In[3]:
+# In[9]:
 
 
 HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.org/a/pSItHG2FBqiS1oim9Eul9d1qM.js" async %></script>""")
@@ -96,9 +112,77 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 #   - git init 
 #   - dvc init 
 # - dvc init creates a .dvc directory structure 
-# - most importantly, the .dvc/cache contains copies of all files checked into dvs whose name==checksum
+# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
 
-# In[7]:
+# In[10]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ### setup  dvc
+
+# - dvc copies most of the behaviour of git. Therefore, run:
+#   - git init 
+#   - dvc init 
+# - dvc init creates a .dvc directory structure 
+# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+
+# In[10]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ### setup  dvc
+
+# - dvc copies most of the behaviour of git. Therefore, run:
+#   - git init 
+#   - dvc init 
+# - dvc init creates a .dvc directory structure 
+# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+
+# In[10]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ### Adding files to   dvc
+
+# - dvc add adds a file to dvc control and creates a .yaml metadata file
+# - the .yaml file can be added to git 
+# - the .yaml file identifies the data file through a checksum
+
+# In[11]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ### setup  dvc
+
+# - dvc copies most of the behaviour of git. Therefore, run:
+#   - git init 
+#   - dvc init 
+# - dvc init creates a .dvc directory structure 
+# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+
+# In[10]:
+
+
+HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+
+
+# ### setup  dvc
+
+# - dvc copies most of the behaviour of git. Therefore, run:
+#   - git init 
+#   - dvc init 
+# - dvc init creates a .dvc directory structure 
+# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+
+# In[10]:
 
 
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")

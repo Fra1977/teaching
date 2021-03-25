@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# TODO:
+# 
+# [] cretae venv with dvc==2
+# 
+# [] rehearse
+# 
+# [] add remote 
+# 
+# [] add pipeline part
+#     
+#     
+
 # In[14]:
 
 
@@ -61,38 +73,6 @@ from IPython.display import HTML
 
 # <center><img src="files/Img/enterprise-guide_full.jpg" alt="JPG" style="width: 50%;"/></center>
 
-# Some more data 
-
-# In[ ]:
-
-
-#![](https://www.python.org/static/community_logos/python-logo-master-v3-TM.png)
-
-
-# In[ ]:
-
-
-# Screencast test 
-
-
-# In[1]:
-
-
-from IPython.display import HTML
-HTML("""<script src="https://asciinema.org/a/kwwq0tFCKpbRvIu9pAwHT4G2q"  async></script>""")
-
-
-# <a href="https://asciinema.org/a/kwwq0tFCKpbRvIu9pAwHT4G2q" target="_blank"><img src="https://asciinema.org/a/kwwq0tFCKpbRvIu9pAwHT4G2q.svg" /></a>
-
-# ### Embedded Player
-
-# In[3]:
-
-
-from IPython.display import HTML
-HTML("""<script id="asciicast-kwwq0tFCKpbRvIu9pAwHT4G2q" src="https://asciinema.org/a/kwwq0tFCKpbRvIu9pAwHT4G2q.js" async></script>""")
-
-
 # ### Install dvc
 
 # - DVC is open source
@@ -126,7 +106,7 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 # - show data.dvc fiel 
 # - verify checksum 
 
-# In[10]:
+# In[18]:
 
 
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
@@ -134,23 +114,42 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 
 # ### Adding files to   dvc
 
-# - dvc add adds a file to dvc control and creates a .yaml metadata file
+# - "dvc add" adds a file to dvc control and creates a .yaml metadata file
 # - the .yaml file can be added to git 
 # - the .yaml file identifies the data file through a checksum
+# - dvc also creates a copy of the file in the local .dvc/cache
 
-# In[11]:
+# In[17]:
 
 
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.org/a/T3SEPUjyFF68O87MN2Fk2DNVZ.js" async></script>""")
 
 
 # ### basic workflow
-- run pipeline 
-- show dvc.yaml file
+
+# - let us run a basic pipeline with dvc run
+# - pipeline is a sequence of processing stages on data 
+# - again, this  means a DAG of 
+#   
+#       input data - processing - output data
+#   
+# - structure: "dvc run" -d \<input data files\> -o \<output data files \> -n \<name\> \<cmd \>
+# 
+#         dvc run \
+#           -d new-labels.zip \
+#           -o checksum.txt \
+#           -d step01.sh \
+#           -n step01\
+#           ./step01.sh
+# 
+# 
+# - The  dvc.yaml file contains the DAG
+# - The dvc.lock file now contains the checksums
+
 # In[10]:
 
 
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+HTML("""""")
 
 
 # ###  the simplest pipeline
@@ -161,38 +160,40 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 # - dvc init creates a .dvc directory structure 
 # - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
 
-# In[10]:
+# In[19]:
 
 
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.org/a/hK33qkfoafLk2Nm0SpLfqIY49.js" async></script>""")
 
 
-# ### tutorial: import data 
+# ### data branching
+
+# ### data  branching
 # 
-# then: run pipeline, show md5sum
-# then  branch, change  code , run new pipeline, show new md5sum
-# then switch back to master, show md5sum before and after dvc checkout
+# - since we keep all metadata in git, we can use branching or tagging
+# - when we change branches, git will automatically checkout the code files and the dvc.yaml/dvc.lock files
+# -  however, we must manually run a dvc checkout to switch also the data files (they are in the cache) 
+# - always run : 
 # 
+#         git checkout
+#         dvc checkout
 
-# - dvc copies most of the behaviour of git. Therefore, run:
-#   - git init 
-#   - dvc init 
-# - dvc init creates a .dvc directory structure 
-# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
-
-# In[10]:
+# In[21]:
 
 
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
+HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.org/a/4O4aN6ftwXVE7OinigsE5sd6t.js" async></script>""")
 
 
-# ### Install dvc
+# ### Data remotes
 
-# In[ ]:
-
-
-
-
+# - just as git, dvc can have remotes:
+#     - local dir
+#     - remote dir (NFS/ssh)
+#     - S3
+# - just as git, you can use 
+#     - dvc push 
+#     - dvc pull 
+# - remember to run dvc checkout
 
 # In[ ]:
 

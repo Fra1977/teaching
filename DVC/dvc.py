@@ -7,11 +7,20 @@
 # 
 # [] rehearse
 # 
+# [] share this git 
+# 
+# 
 # [] add remote 
 # 
 # [] add pipeline part
+# 
+# [] show dag commmand
+# 
+# [] prepare local demos 
+# 
+# [] show creation of notebook
 #     
-#     
+# [] reproducible: dvc repro    
 
 # In[14]:
 
@@ -36,24 +45,37 @@ from IPython.display import HTML
 #     - branching with git and dvc 
 #     - adding a remote: types 
 #     - adding a local FS remote.
-#     - considerations: storage space, personal or anonymized data 
-#   - How to create repeatable, deterministic and  reusable Data Science workflows
-#     - think in DAGs 
-#     - thnk about audience and security
-#     - keep things agile, but at the same time prepare for substituting data
-#     - Oss . Other solutions
+#   - Conclusion
+
+# ## Deterministic Data Science
+
+# - Principal features of Data Science;
+#   - Experimental
+#   - Result of experiments depends on code *and* data
+# - Standard Code Vrsioning Systems (CVS) cannot handle data - simply because of size
+
+# 
+# <center><img src="files/Img/Rosenblattperceptron.png" alt="DVC" style="width: 100%;"/></center>
+# 
+# [src: https://nl.wikipedia.org/wiki/Perceptron]
+
+# Data science is an inter-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data
+#     
+#     [https://en.wikipedia.org/wiki/Data_science]
 
 # ## What is DVC?
 
 # Basics  
 # 
-# - www.dvc.org , OSS, since 2019, high activity 
+# - http://dvc.org , OSS, since 2019, high activity 
 # - idea: use git for code versioning, and augment git for data versioning via md5sum
-# - metadata of data objects is kept in dvc.yaml files which contain the data hash, and which is versioned in git 
+# - metadata of data objects is kept in ascii text files which contain the data hash, and which are versioned in git 
 # - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data 
 
 #  
 # <center><img src="files/Img/model-sharing-digram.png" alt="DVC" style="width: 100%;"/></center>
+# 
+# [src: http://dvc.org]
 
 # ## What else is DVC?
 
@@ -64,14 +86,17 @@ from IPython.display import HTML
 #       data input - code - data output
 #   
 #   
-#   - this concept allows to replicate the main  functionality of SAS EG, ariflow, luigi, and Data Science platforms such as alteryx, dataiku etc.  
+#   - this concept allows to replicate a principal   functionality of SAS EG, Airflow, Luigi, and Data Science platforms such as Alteryx, Dataiku etc.  
 
 #  
 # 
 # <center><img src="files/Img/dependency-graph.png" alt="JPG" style="width: 40%;"/></center>
 # 
+# [src: https://dvc.org/blog/r-code-and-reproducible-model-development-with-dvc]
 
 # <center><img src="files/Img/enterprise-guide_full.jpg" alt="JPG" style="width: 50%;"/></center>
+# 
+# [src: https://www.analyticsvidhya.com/blog/2013/07/productivity-boosting-tips-sas-enterprise-guide/]
 
 # ### Install dvc
 
@@ -80,7 +105,7 @@ from IPython.display import HTML
 #     - . \<path_to_venv\>/bin/activate 
 #     - pip install dvc
 
-# In[15]:
+# In[34]:
 
 
 HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.org/a/pSItHG2FBqiS1oim9Eul9d1qM.js" async %></script>""")
@@ -88,25 +113,14 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 
 # ### setup  dvc
 
-# - dvc copies most of the behaviour of git. Therefore, run:
+# - dvc copies most of the behaviour of git. 
+# - Therefore, run:
 #   - git init 
 #   - dvc init 
 # - dvc init creates a .dvc directory structure 
 # - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
 
-# In[16]:
-
-
-HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
-
-
-# ### add files 
-
-# - add a data file 
-# - show data.dvc fiel 
-# - verify checksum 
-
-# In[18]:
+# In[33]:
 
 
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
@@ -114,18 +128,18 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 
 # ### Adding files to   dvc
 
-# - "dvc add" adds a file to dvc control and creates a .yaml metadata file
-# - the .yaml file can be added to git 
-# - the .yaml file identifies the data file through a checksum
+# - "dvc add" adds a file to dvc control and creates a .dvc metadata file
+# - the .dvc file can be added to git 
+# - the .dvc file identifies the data file through a checksum
 # - dvc also creates a copy of the file in the local .dvc/cache
 
-# In[17]:
+# In[35]:
 
 
 HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.org/a/T3SEPUjyFF68O87MN2Fk2DNVZ.js" async></script>""")
 
 
-# ### basic workflow
+# ### Basic Workflow
 
 # - let us run a basic pipeline with dvc run
 # - pipeline is a sequence of processing stages on data 
@@ -146,21 +160,7 @@ HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.
 # - The  dvc.yaml file contains the DAG
 # - The dvc.lock file now contains the checksums
 
-# In[10]:
-
-
-HTML("""""")
-
-
-# ###  the simplest pipeline
-
-# - dvc copies most of the behaviour of git. Therefore, run:
-#   - git init 
-#   - dvc init 
-# - dvc init creates a .dvc directory structure 
-# - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
-
-# In[19]:
+# In[37]:
 
 
 HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.org/a/hK33qkfoafLk2Nm0SpLfqIY49.js" async></script>""")
@@ -178,7 +178,7 @@ HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.
 #         git checkout
 #         dvc checkout
 
-# In[21]:
+# In[38]:
 
 
 HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.org/a/4O4aN6ftwXVE7OinigsE5sd6t.js" async></script>""")
@@ -189,45 +189,74 @@ HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.
 # - just as git, dvc can have remotes:
 #     - local dir
 #     - remote dir (NFS/ssh)
-#     - S3
+#     - S3/Azure/Google Drive
 # - just as git, you can use 
 #     - dvc push 
 #     - dvc pull 
 # - remember to run dvc checkout
+#   
+# <div class="alert alert-block alert-warning"><b>the workflow shown is a bit more complex, but universal:</b>
+# 
+#   - setup local git and dvc 
+#   - setup remote git and dvc 
+#   - push to remotes 
+#   - create second workingdir as git clone
+#   - setup code and data connections 
+# 
+# </div>  
+#   
+# 
 
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
+# In[39]:
 
 
+HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.org/a/P8o728hJc5uXA6BiG2Kinqc3x.js" async></script>""")
 
 
+# ### Meaning of Data Remotes
 
-# ### Install dvc
+# <div class="alert alert-block alert-info"><b>Data remotes allow to:</b> 
+#     
+#   - copy  code and data  between working dirs  and remote
+#   - sync code and data between working dirs 
+#   - create  branches 
+#   - have a complete data science shared workflow 
+#     
+# </div> 
+# 
 
-# In[ ]:
+# 
+# <center><img src="files/Img/centralized_workflow.png" alt="JPG" style="width: 85%;"/></center>
+# 
+# 
+# [src: https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows]
 
+# ### Conclusion
 
+# How to create deterministic and reusable Data Science workflows:
+# 
+#   - Your experiments are only reproducible and deterministic if you control data provenance.
+#     - Use dvc to track input data, output data, models and metrics
+#     - Become used to git and dvc workflows
+#     - Establish fixed remotes 
+#     - Keep methods agile and simple, but at the same time prepare for substituting data  
+#  - Think in DAGs 
+#     - dvc repro allows to exactly reproduce DAGs
+#     - Branches allow to test and switch between models, track metrics, and to "undo"
+#   - Colaborate and deploy
+#     - Branches and remotes enable colaborative workflows
+#     - Remotes also enable mlops
+#     - Think about audience and security
+#     - Other considerations: storage space, personal or anonymized data    
+#   - Other solutions: mlflow, git-lfs, ...
+#   - This presentation:
+# https://github.com/Fra1977/teaching
 
-
-
-# In[ ]:
-
-
-
-
+# 
+# 
+# <center><img src="files/Img/graphic.png" alt="JPG" style="width: 85%;"/></center>
+# 
+# [src: http://dvc.org]
 
 # ### Install dvc
 

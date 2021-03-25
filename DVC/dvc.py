@@ -102,6 +102,8 @@ from IPython.display import HTML
 # 
 # [src: https://www.analyticsvidhya.com/blog/2013/07/productivity-boosting-tips-sas-enterprise-guide/]
 
+# ## Workshop
+
 # ### Install DVC
 
 # - DVC is open source
@@ -155,7 +157,7 @@ HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.
 # 
 #         dvc run \
 #           -d new-labels.zip \
-#           -o checksum.txt \
+#           -o wc01.txt \
 #           -d step01.sh \
 #           -n step01\
 #           ./step01.sh

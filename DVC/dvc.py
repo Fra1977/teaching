@@ -1,26 +1,30 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# FR 03/2021
+# 
 # TODO:
 # 
 # [] cretae venv with dvc==2
 # 
-# [] rehearse
+# [] rehearse and record 
 # 
-# [] share this git 
+# [x] share this git 
 # 
 # 
-# [] add remote 
+# [x] add remote 
 # 
-# [] add pipeline part
+# [x] add pipeline part
 # 
-# [] show dag commmand
+# [x] reproducible: dvc repro    
+# 
+# [x] show dag commmand
 # 
 # [] prepare local demos 
 # 
 # [] show creation of notebook
 #     
-# [] reproducible: dvc repro    
+# 
 
 # In[14]:
 
@@ -52,7 +56,7 @@ from IPython.display import HTML
 # - Principal features of Data Science;
 #   - Experimental
 #   - Result of experiments depends on code *and* data
-# - Standard Code Vrsioning Systems (CVS) cannot handle data - simply because of size
+# - Standard Code Versioning Systems (CVS) cannot handle data - simply because of size
 
 # 
 # <center><img src="files/Img/Rosenblattperceptron.png" alt="DVC" style="width: 100%;"/></center>
@@ -69,7 +73,7 @@ from IPython.display import HTML
 # 
 # - http://dvc.org , OSS, since 2019, high activity 
 # - idea: use git for code versioning, and augment git for data versioning via md5sum
-# - metadata of data objects is kept in ascii text files which contain the data hash, and which are versioned in git 
+# - metadata of data objects are kept in ascii text files which contain the data hashes, and which are versioned in git 
 # - this concept allows to mirror the most important  git funciontality (versioning, branches, remotes) for data 
 
 #  
@@ -77,7 +81,7 @@ from IPython.display import HTML
 # 
 # [src: http://dvc.org]
 
-# ## What else is DVC?
+# ## What Else is DVC?
 
 # DAG
 # 
@@ -98,7 +102,7 @@ from IPython.display import HTML
 # 
 # [src: https://www.analyticsvidhya.com/blog/2013/07/productivity-boosting-tips-sas-enterprise-guide/]
 
-# ### Install dvc
+# ### Install DVC
 
 # - DVC is open source
 # - install via pip ( or conda), preferably in a venv:
@@ -111,7 +115,7 @@ from IPython.display import HTML
 HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.org/a/pSItHG2FBqiS1oim9Eul9d1qM.js" async %></script>""")
 
 
-# ### setup  dvc
+# ### Setup  DVC
 
 # - dvc copies most of the behaviour of git. 
 # - Therefore, run:
@@ -126,7 +130,7 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
 
 
-# ### Adding files to   dvc
+# ### Adding Files to DVC
 
 # - "dvc add" adds a file to dvc control and creates a .dvc metadata file
 # - the .dvc file can be added to git 
@@ -166,10 +170,8 @@ HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.
 HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.org/a/hK33qkfoafLk2Nm0SpLfqIY49.js" async></script>""")
 
 
-# ### data branching
+# ### Data Branching
 
-# ### data  branching
-# 
 # - since we keep all metadata in git, we can use branching or tagging
 # - when we change branches, git will automatically checkout the code files and the dvc.yaml/dvc.lock files
 # -  however, we must manually run a dvc checkout to switch also the data files (they are in the cache) 
@@ -184,7 +186,7 @@ HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.
 HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.org/a/4O4aN6ftwXVE7OinigsE5sd6t.js" async></script>""")
 
 
-# ### Data remotes
+# ### Data Remotes
 
 # - just as git, dvc can have remotes:
 #     - local dir
@@ -235,21 +237,21 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 
 # How to create deterministic and reusable Data Science workflows:
 # 
-#   - Your experiments are only reproducible and deterministic if you control data provenance.
-#     - Use dvc to track input data, output data, models and metrics
-#     - Become used to git and dvc workflows
-#     - Establish fixed remotes 
-#     - Keep methods agile and simple, but at the same time prepare for substituting data  
-#  - Think in DAGs 
-#     - dvc repro allows to exactly reproduce DAGs
-#     - Branches allow to test and switch between models, track metrics, and to "undo"
-#   - Colaborate and deploy
-#     - Branches and remotes enable colaborative workflows
-#     - Remotes also enable mlops
-#     - Think about audience and security
-#     - Other considerations: storage space, personal or anonymized data    
-#   - Other solutions: mlflow, git-lfs, ...
-#   - This presentation:
+# - Your experiments are only reproducible and deterministic if you control data provenance.
+#   - Use dvc to track input data, output data, models and metrics
+#   - Become used to git and dvc workflows
+#   - Establish fixed remotes 
+#   - Keep methods agile and simple, but at the same time prepare for substituting data  
+# - Think in DAGs 
+#   - dvc repro allows to exactly reproduce DAGs
+#   - Branches allow to test and switch between models, track metrics, and to "undo"
+# - Colaborate and deploy
+#   - Branches and remotes enable colaborative workflows
+#   - Remotes also enable mlops
+#   - Think about audience and security
+#   - Other considerations: storage space, personal or anonymized data    
+# - Other solutions: mlflow, git-lfs, ...
+# - This presentation:
 # https://github.com/Fra1977/teaching
 
 # 
@@ -258,7 +260,18 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 # 
 # [src: http://dvc.org]
 
-# ### Install dvc
+# 
+# 
+# <center><img src="files/Img/Thats_all_folks.svg" alt="JPG" style="width: 85%;"/></center>
+# 
+# [src: https://commons.wikimedia.org/wiki/File:Thats_all_folks.svg]
+
+# ### Questions
+
+# - Is this talk useful?
+# - Is the format appropriate?
+# - What else should be in the materials?
+# - Should we continue this sharing?
 
 # In[ ]:
 
@@ -266,164 +279,57 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 
 
 
-# In[ ]:
+# ### DVC Repro and DVC dag
 
+# - dvc dag shows the pipeline, either on code or output data view
+# - can be exported and visualized with dot
+# - dvc metrics allows to visualize MK metrics and compare them between branches or commits
+# - dvc repro allows to reproduce a pipeline. 
+#   - gives deterministic result for each combination of code and data
+#   - if code and data in all stages are unchanged from last run, dvc repro will know from checksums that it does not need to run 
+#   - if there is a change in a stage, dvc repro will run the DAG from this stage on
+#     
 
+# In[44]:
 
 
+HTML("""<script id="asciicast-rbrddPA7mwzDaSOGD3CKGin9s" src="https://asciinema.org/a/rbrddPA7mwzDaSOGD3CKGin9s.js" async></script>""")
 
-# ### Install dvc
 
-# In[ ]:
+# ### Extra: Interactive Notebooks
 
+# In[46]:
 
 
+import numpy as np
+import matplotlib.pyplot as plt
+plt.ion()
 
+def polynom(x):
+    return 2 * x**2 - 20 * x + 2
 
-# In[ ]:
+X = np.linspace(-10, 10)
+Y = polynom(X)
+plt.plot(X, Y);
 
 
+# In[47]:
 
 
+#an animation to illustrate 
+# translation by variable change
+from ipywidgets import interact, FloatSlider
 
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# ### Install dvc
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
+def parabolic(offset):
+    X = np.linspace(-10, 10)
+    Y = polynom(X-offset)
+    # use same y scale for all offsets
+    plt.gca().set_ylim([-100, 500])
+    plt.plot(X, Y);
+    
+interact(parabolic, 
+         offset=FloatSlider(min=-10., max=10.,
+                           step=0.25));
 
 
 # ### Install dvc

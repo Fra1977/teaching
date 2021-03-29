@@ -110,6 +110,8 @@ from IPython.display import HTML
 # - install via pip ( or conda), preferably in a venv:
 #     - . \<path_to_venv\>/bin/activate 
 #     - pip install dvc
+#     
+# code](./DVC_Examples/Listings/install.sh)
 
 # In[34]:
 
@@ -125,6 +127,8 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 #   - dvc init 
 # - dvc init creates a .dvc directory structure 
 # - most importantly, the .dvc/cache contains copies of all files checked into dvc with  name==checksum
+# 
+# [code](./DVC_Examples/Listings/setup.sh)
 
 # In[33]:
 
@@ -138,6 +142,8 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 # - the .dvc file can be added to git 
 # - the .dvc file identifies the data file through a checksum
 # - dvc also creates a copy of the file in the local .dvc/cache
+# 
+# [code](./DVC_Examples/Listings/adding_files.sh)
 
 # In[35]:
 
@@ -165,8 +171,10 @@ HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.
 # 
 # - The  dvc.yaml file contains the DAG
 # - The dvc.lock file now contains the checksums
+# 
+# [code](./DVC_Examples/Listings/basic_workflow.sh)
 
-# In[37]:
+# In[48]:
 
 
 HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.org/a/hK33qkfoafLk2Nm0SpLfqIY49.js" async></script>""")
@@ -181,6 +189,8 @@ HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.
 # 
 #         git checkout
 #         dvc checkout
+# 
+# [code](./DVC_Examples/Listings/data_branching.sh)
 
 # In[38]:
 
@@ -209,7 +219,7 @@ HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.
 # 
 # </div>  
 #   
-# 
+# [code](./DVC_Examples/Listings/remotes.sh)
 
 # In[39]:
 
@@ -290,13 +300,18 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 #   - gives deterministic result for each combination of code and data
 #   - if code and data in all stages are unchanged from last run, dvc repro will know from checksums that it does not need to run 
 #   - if there is a change in a stage, dvc repro will run the DAG from this stage on
-#     
+#   
+# [code](./DVC_Examples/Listings/dag_repro.sh)
 
-# In[44]:
+# In[71]:
 
 
 HTML("""<script id="asciicast-rbrddPA7mwzDaSOGD3CKGin9s" src="https://asciinema.org/a/rbrddPA7mwzDaSOGD3CKGin9s.js" async></script>""")
 
+
+# 
+
+# 
 
 # ### Extra: Interactive Notebooks
 

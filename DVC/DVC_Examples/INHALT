@@ -1,0 +1,2 @@
+ 5155  asciinema  cat https://asciinema.org/a/rbrddPA7mwzDaSOGD3CKGin9s  |grep teaching   | awk '{split($0,a,"\$"); print a[2]}' >Listings/dag_repro.sh
+ 5178  asciinema  cat https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz   | awk '{split($0,a,"$"); print a[2]}' >Listings/setup.sh

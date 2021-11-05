@@ -26,7 +26,7 @@
 #     
 # 
 
-# In[14]:
+# In[2]:
 
 
 from IPython.display import HTML
@@ -113,7 +113,7 @@ from IPython.display import HTML
 #     
 # code](./DVC_Examples/Listings/install.sh)
 
-# In[34]:
+# In[3]:
 
 
 HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.org/a/pSItHG2FBqiS1oim9Eul9d1qM.js" async %></script>""")
@@ -130,7 +130,7 @@ HTML("""<script id="asciicast-pSItHG2FBqiS1oim9Eul9d1qM" src="https://asciinema.
 # 
 # [code](./DVC_Examples/Listings/setup.sh)
 
-# In[33]:
+# In[4]:
 
 
 HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.org/a/w89eeSIK0O9RvUOIp2Aagj1Dz.js" async></script>""")
@@ -145,7 +145,7 @@ HTML("""<script id="asciicast-w89eeSIK0O9RvUOIp2Aagj1Dz" src="https://asciinema.
 # 
 # [code](./DVC_Examples/Listings/adding_files.sh)
 
-# In[35]:
+# In[5]:
 
 
 HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.org/a/T3SEPUjyFF68O87MN2Fk2DNVZ.js" async></script>""")
@@ -174,7 +174,7 @@ HTML("""<script id="asciicast-T3SEPUjyFF68O87MN2Fk2DNVZ" src="https://asciinema.
 # 
 # [code](./DVC_Examples/Listings/basic_workflow.sh)
 
-# In[48]:
+# In[6]:
 
 
 HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.org/a/hK33qkfoafLk2Nm0SpLfqIY49.js" async></script>""")
@@ -192,7 +192,7 @@ HTML("""<script id="asciicast-hK33qkfoafLk2Nm0SpLfqIY49" src="https://asciinema.
 # 
 # [code](./DVC_Examples/Listings/data_branching.sh)
 
-# In[38]:
+# In[7]:
 
 
 HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.org/a/4O4aN6ftwXVE7OinigsE5sd6t.js" async></script>""")
@@ -221,7 +221,7 @@ HTML("""<script id="asciicast-4O4aN6ftwXVE7OinigsE5sd6t" src="https://asciinema.
 #   
 # [code](./DVC_Examples/Listings/remotes.sh)
 
-# In[39]:
+# In[8]:
 
 
 HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.org/a/P8o728hJc5uXA6BiG2Kinqc3x.js" async></script>""")
@@ -245,6 +245,52 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 # 
 # [src: https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows]
 
+# ## Personal Experience
+# 
+# - Promoting DVC locally since 2019
+# - Package is stable, actively developed, large user group
+# - Problems with adaptation not directly related to DVC, but to 
+#   - Few users
+#   - No strict adherence to git 
+#   - Late introduction of common computing platform 
+#   - CLI not attractive
+#  - Still, all recent MA production models were cretaed in DVC, and none of these blocking points exist at the Hub
+# - Comparison to MLFlow:
+#   - No direct graphical capabilities in DVC , no database of experiments 
+#   - However, DVC is essentially md5sums in git. No alterations to code or data, and extremely future-save. 
+# - New tool ![fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
+
+# 
+# <center><img src="files/Img/Selection_082.png" alt="JPG" style="width: 85%;"/></center>
+# 
+# 
+# [src: https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/]
+# 
+
+# ## Personal Experience
+# 
+# - Promoting DVC locally since 2019
+# - Package is stable, actively developed, large user group
+# - Problems with adaptation not directly related to DVC, but to 
+#   - Few users
+#   - No strict adherence to git 
+#   - Late introduction of common computing platform 
+#   - CLI not attractive
+#  - Still, all recent MA production models were cretaed in DVC, and none of these blocking points exist at the Hub
+# - Comparison to MLFlow:
+#   - No direct graphical capabilities in DVC , no database of experiments 
+#   - However, DVC is essentially md5sums in git. No alterations to code or data, and extremely future-save. 
+# - New tool ![fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
+
+#  "Generally, Metaflow seems like a great choice for large in-production use-cases with large teams but might be too difficult to apply for our intended user-base and custom environment. 
+#  
+#  MLflow should be a serious consideration if the Institute is considering standardizing the whole ML workflow and handling it with the same importance as other infrastructure. It probably can be used by single researchers or small teams, if they focus solely on MLflow Tracking to track experiments locally on their machine and organize code into projects for future reuse. MLflow Tracking reads and writes files to the local file system by default, so there is no need to deploy a server. 
+#  
+# *DVC is more narrow than the other tools (eg. scaling must be handled by backends) and has the best balance between advantages and disadvantages for our use-case. It covers needs such as experiment tracking, comparison and data-versioning and builds around well elaborated tools like git which makes it easier accessible and usable within already existing workflows. Also it’s the least code-invasive variant.*"
+# 
+# 
+# [src: https://medium.com/geekculture/comparing-metaflow-mlflow-and-dvc-e84be6db2e2]
+
 # ### Conclusion
 
 # How to create deterministic and reusable Data Science workflows:
@@ -262,7 +308,7 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 #   - Remotes also enable mlops
 #   - Think about audience and security
 #   - Other considerations: storage space, personal or anonymized data    
-# - Other solutions: mlflow, git-lfs, ...
+# - Other solutions: mlflow, git-lfs, ... => to be explored 
 # - This presentation:
 # https://github.com/Fra1977/teaching
 

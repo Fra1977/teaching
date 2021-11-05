@@ -247,18 +247,18 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 
 # ## Personal Experience
 # 
-# - Promoting DVC locally since 2019
+# - Promoting DVC since 2019
 # - Package is stable, actively developed, large user group
-# - Problems with adaptation not directly related to DVC, but to 
+# - Problems observed with adaptation not directly related to DVC, but to 
 #   - Few users
 #   - No strict adherence to git 
 #   - Late introduction of common computing platform 
 #   - CLI not attractive
-#  - Still, all recent MA production models were cretaed in DVC, and none of these blocking points exist at the Hub
+#  - Still, using  DVC in production is feasible.
 # - Comparison to MLFlow:
 #   - No direct graphical capabilities in DVC , no database of experiments 
 #   - However, DVC is essentially md5sums in git. No alterations to code or data, and extremely future-save. 
-# - New tool ![fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
+# - New tool [fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
 
 # 
 # <center><img src="files/Img/Selection_082.png" alt="JPG" style="width: 85%;"/></center>
@@ -269,18 +269,18 @@ HTML("""<script id="asciicast-P8o728hJc5uXA6BiG2Kinqc3x" src="https://asciinema.
 
 # ## Personal Experience
 # 
-# - Promoting DVC locally since 2019
+# - Promoting DVC since 2019
 # - Package is stable, actively developed, large user group
-# - Problems with adaptation not directly related to DVC, but to 
+# - Problems observed with adaptation not directly related to DVC, but to 
 #   - Few users
 #   - No strict adherence to git 
 #   - Late introduction of common computing platform 
 #   - CLI not attractive
-#  - Still, all recent MA production models were cretaed in DVC, and none of these blocking points exist at the Hub
+#  - Still, using  DVC in production is feasible.
 # - Comparison to MLFlow:
 #   - No direct graphical capabilities in DVC , no database of experiments 
 #   - However, DVC is essentially md5sums in git. No alterations to code or data, and extremely future-save. 
-# - New tool ![fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
+# - New tool [fds](https://dagshub.com/blog/fds-fast-data-science-with-git-and-dvc/) wraps git and dvc in one command 
 
 #  "Generally, Metaflow seems like a great choice for large in-production use-cases with large teams but might be too difficult to apply for our intended user-base and custom environment. 
 #  
